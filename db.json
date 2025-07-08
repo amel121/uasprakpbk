@@ -1,0 +1,11 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Belajar Vue",
+      "description": "Pelajari component dan router",
+      "deadline": "2025-07-10",
+      "category": "PBK"
+    }
+  ]
+}
