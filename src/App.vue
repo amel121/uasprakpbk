@@ -1,30 +1,71 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="min-h-screen bg-gradient-to-b from-pink-100 via-pink-50 to-purple-50 text-gray-800 font-sans">
+    <!-- Navbar -->
+    <header class="bg-white shadow-md border-b border-pink-300 sticky top-0 z-10">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col items-center">
+        <!-- Logo dan Judul -->
+        <div class="flex items-center space-x-3 mb-2">
+          <img src="@/assets/logo.png" alt="Logo" class="w-12 h-12 rounded-full" />
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-pink-700 tracking-tight drop-shadow-sm">
+            Manajemen Toko Donat
+          </h1>
+        </div>
+
+        <!-- Menu Navigasi -->
+        <nav class="flex flex-wrap justify-center gap-4">
+          <RouterLink
+            v-for="item in menu"
+            :key="item.name"
+            :to="item.to"
+            class="text-sm sm:text-base px-2 pb-1 font-medium transition-all duration-200 ease-in-out hover:text-pink-600"
+            active-class="text-pink-700 font-bold border-b-2 border-pink-600"
+          >
+            {{ item.name }}
+          </RouterLink>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Isi Halaman -->
+    <main class="px-4 sm:px-6 lg:px-8 py-8">
+      <transition name="fade-slide" mode="out-in">
+        <router-view />
+      </transition>
+    </main>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script setup>
+const menu = [
+  { name: 'Dashboard', to: '/' },
+  { name: 'Produk', to: '/produk' },
+  { name: 'Pesanan', to: '/pesanan' },
+  { name: 'Stok', to: '/stok' },
+  { name: 'Laporan', to: '/laporan' },
+  { name: 'Login', to: '/login' }
+]
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* Fade + Slide */
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: all 0.4s ease;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+/* Opsional tambahan fade umum */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>

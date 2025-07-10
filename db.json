@@ -1,11 +1,18 @@
 {
-  "tasks": [
+  "produk": [
     {
       "id": 1,
-      "title": "Belajar Vue",
-      "description": "Pelajari component dan router",
-      "deadline": "2025-07-10",
-      "category": "PBK"
+      "nama": "Donat Coklat",
+      "harga": 8000,
+      "gambar": "https://source.unsplash.com/400x300/?donut,chocolate",
+      "deskripsi": "Donat lezat dengan topping coklat lumer"
+    },
+    {
+      "id": 2,
+      "nama": "Donat Stroberi",
+      "harga": 8500,
+      "gambar": "https://source.unsplash.com/400x300/?donut,strawberry",
+      "deskripsi": "Donat segar dengan topping stroberi manis"
     }
   ]
 }
